@@ -60,7 +60,7 @@ export const experience = [
 
 export const skillGroups = [
   { group: "Languages", items: ["Python", "SQL"] },
-  { group: " Data Science & Statistics", items: ["Data Cleaning", "Feature Engineering", "Model Evaluation", "Exploratory Data Analysis","Feature Engineering", "Statistical Analysis","Data Visualization"] },
+  { group: " Data Science & Statistics", items: ["Data Cleaning", "Model Evaluation", "Exploratory Data Analysis","Feature Engineering", "Statistical Analysis","Data Visualization"] },
   {
     group: "AI / ML",
     items: ["Deep Learning", "Computer Vision", "Transfer Learning", "Retrieval-Augmented Generation (RAG)"],

@@ -1,4 +1,4 @@
-import { Suspense, useRef, useMemo } from "react";
+import { Suspense, useRef, useMemo, useState} from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
@@ -152,8 +152,31 @@ function DriftParticles() {
     </points>
   );
 }
-
+function hasWebGL() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch (e) {
+    return false;
+  }
+}
 export default function HeroScene() {
+  const [supported] = useState(() => hasWebGL());
+
+  if (!supported) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <div
+          className="w-96 h-96 rounded-full blur-[100px] opacity-40"
+          style={{ background: "radial-gradient(circle, rgba(47,129,255,0.5) 0%, transparent 70%)" }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="absolute inset-0" aria-hidden="true">
       <Canvas

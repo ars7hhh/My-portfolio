@@ -23,7 +23,7 @@ export default function Skills() {
               <div className="flex flex-wrap gap-2">
                 {g.items.map((item) => (
                   <span
-                    key={item}
+                       key={`${g.group}-${item}`}
                     className="glow-hover text-sm text-ink-soft border border-line-strong rounded-full px-3 py-1 hover:text-ink transition-colors"
                   >
                     {item}
