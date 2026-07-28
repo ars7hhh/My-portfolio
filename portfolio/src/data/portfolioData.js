@@ -16,7 +16,7 @@ export const stats = [
   { label: "CGPA", value: "8.92", suffix: "/10" },
   { label: "Best model accuracy", value: "93", suffix: "%" },
   { label: "Projects shipped", value: "5", suffix: "" },
-  { label: "Certifications", value: "3", suffix: "" },
+  { label: "Certifications", value: "4", suffix: "" },
 ];
 
 export const education = [
