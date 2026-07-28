@@ -7,17 +7,19 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const phone = profile.whatsapp.replace(/[^0-9]/g, "");
+  e.preventDefault();
 
-    // Removed the hardcoded prefilled message
-    const text = `${name}\n\n${message}`;
+  const phone = profile.whatsapp.replace(/[^0-9]/g, "");
 
-    window.open(
-      `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
-      "_blank"
-    );
-  };
+  const text = `Hey, I'm ${name}
+
+${message}`;
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+};
 
   return (
     <motion.form
