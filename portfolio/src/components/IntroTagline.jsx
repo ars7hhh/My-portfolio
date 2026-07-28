@@ -51,11 +51,13 @@ const smoothProgress = useSpring(scrollYProgress, { stiffness: 300, damping: 40 
   className="relative z-10 max-w-4xl px-6 text-center"
 >
         <motion.div
-          style={{ opacity: inOpacity, y: inY }}
-          className="mono-label text-[11px] text-ink-faint mb-6"
-        >
-          The person behind the models
-        </motion.div>
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.6 }}
+  transition={{ duration: 0.5 }}
+  className="mono-label text-[11px] text-ink-faint mb-6"
+>
+</motion.div>
 
         <motion.h2
           variants={container}
@@ -74,12 +76,14 @@ const smoothProgress = useSpring(scrollYProgress, { stiffness: 300, damping: 40 
         </motion.h2>
 
         <motion.p
-          style={{ opacity: inOpacity, y: inY }}
-          transition={{ delay: 0.3 }}
-          className="mt-6 text-ink-soft text-base md:text-lg max-w-xl mx-auto"
-        >
-          Scroll down for the profile, the stack, the projects, and everything that got me here.
-        </motion.p>
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.6 }}
+  transition={{ duration: 0.5, delay: 0.15 }}
+  className="mt-6 text-ink-soft text-base md:text-lg max-w-xl mx-auto"
+>
+  Scroll down for the profile, the stack, the projects, and everything that got me here.
+</motion.p>
       </motion.div>
 
       <motion.div

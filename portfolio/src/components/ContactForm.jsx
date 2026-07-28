@@ -8,9 +8,15 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const text = `Hi Saheed, I'm ${name || "..."}.\n\n${message}`;
     const phone = profile.whatsapp.replace(/[^0-9]/g, "");
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
+
+    // Removed the hardcoded prefilled message
+    const text = `${name}\n\n${message}`;
+
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
   };
 
   return (
@@ -23,6 +29,7 @@ export default function ContactForm() {
       className="rounded-2xl p-6 md:p-8 max-w-xl mx-auto mt-10 text-left border border-white/15 bg-white/[0.04] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_40px_-12px_rgba(0,0,0,0.7)]"
     >
       <label className="mono-label text-[10px] text-ink-faint block mb-2"></label>
+
       <input
         type="text"
         value={name}
@@ -32,6 +39,7 @@ export default function ContactForm() {
       />
 
       <label className="mono-label text-[10px] text-ink-faint block mb-2"></label>
+
       <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
