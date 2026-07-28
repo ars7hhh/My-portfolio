@@ -11,7 +11,7 @@ export default function AmbientBackground() {
       <div className="absolute inset-0 bg-bg" />
       <motion.div
         style={{ y: y1 }}
-        className="absolute -top-40 -left-40 w-[38rem] h-[38rem] rounded-full opacity-30 blur-[110px]"
+        className="absolute -top-40 -left-40 w-[38rem] h-[38rem] rounded-full opacity-30 blur-[80px]"
         animate={{ scale: [1, 1.12, 1] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -20,7 +20,7 @@ export default function AmbientBackground() {
 
       <motion.div
         style={{ y: y2 }}
-        className="absolute top-1/3 -right-56 w-[44rem] h-[44rem] rounded-full opacity-25 blur-[130px]"
+        className="absolute top-1/3 -right-56 w-[44rem] h-[44rem] rounded-full opacity-25 blur-[80px]"
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       >
@@ -29,7 +29,7 @@ export default function AmbientBackground() {
 
       <motion.div
         style={{ y: y3 }}
-        className="absolute bottom-0 left-1/4 w-[34rem] h-[34rem] rounded-full opacity-20 blur-[120px]"
+        className="absolute bottom-0 left-1/4 w-[34rem] h-[34rem] rounded-full opacity-20 blur-[80px]"
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       >

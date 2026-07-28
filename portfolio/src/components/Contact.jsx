@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import { motion } from "framer-motion";
 import { profile } from "../data/portfolioData";
 
@@ -60,7 +61,10 @@ const word = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative min-h-screen flex flex-col justify-center py-24 md:py-32 overflow-hidden">
+    <section
+  id="contact"
+  className="relative min-h-[100dvh] flex flex-col justify-center py-24 md:py-32 overflow-hidden pb-[env(safe-area-inset-bottom)]"
+>
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         aria-hidden="true"
@@ -128,6 +132,7 @@ export default function Contact() {
             </motion.a>
           ))}
         </div>
+        <ContactForm />
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

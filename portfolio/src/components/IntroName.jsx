@@ -10,12 +10,12 @@ const container = {
 };
 
 const letter = {
-  hidden: { y: "120%", opacity: 0, filter: "blur(10px)" },
+  hidden: { y: "115%", opacity: 0, filter: "blur(6px)" },
   show: {
     y: "0%",
     opacity: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -32,7 +32,11 @@ export default function IntroName() {
   const words = profile.name.split(" ");
 
   return (
-    <section id="intro" ref={ref} className="relative h-screen overflow-hidden flex items-center justify-center">
+    <section
+      id="intro"
+      ref={ref}
+      className="relative min-h-[100dvh] overflow-hidden flex items-center justify-center py-[env(safe-area-inset-top)] px-4"
+    >
       <motion.div
         style={{ opacity: orbOpacity }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -68,7 +72,7 @@ export default function IntroName() {
           className="font-display font-semibold tracking-tight leading-[0.95] text-[13vw] sm:text-[10vw] md:text-[11vw] text-gradient"
         >
           {words.map((word, wi) => (
-            <span key={wi} className="inline-block overflow-hidden pb-2 mr-[0.28em] last:mr-0 align-bottom">
+            <span key={wi} className="block sm:inline-block overflow-hidden pb-2 sm:mr-[0.28em] last:mr-0 align-bottom">
               <span className="inline-flex">
                 {word.split("").map((ch, ci) => (
                   <motion.span key={ci} variants={letter} className="inline-block">
@@ -81,12 +85,12 @@ export default function IntroName() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="mt-6 mono-label text-[10px] md:text-[11px] text-ink-faint"
+          transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-sm md:text-base text-ink-soft font-medium max-w-xl mx-auto leading-relaxed"
         >
-          {profile.location}
+          Computer Science Graduate specializing in Data Science | AI &amp; ML.
         </motion.p>
       </motion.div>
 
@@ -94,7 +98,7 @@ export default function IntroName() {
         style={{ opacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.6 }}
+        transition={{ duration: 0.6, delay: 1.9 }}
         className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
         <span className="mono-label text-[9px] text-ink-faint">scroll to explore</span>

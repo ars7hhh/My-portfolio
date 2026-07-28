@@ -199,13 +199,7 @@ export default function HeroScene() {
             dampingFactor={0.06}
           />
           <EffectComposer>
-            <Bloom
-              intensity={0.9}
-              luminanceThreshold={0.1}
-              luminanceSmoothing={0.35}
-              mipmapBlur
-              radius={0.6}
-            />
+            <Bloom intensity={0.7} luminanceThreshold={0.15} luminanceSmoothing={0.35} mipmapBlur radius={0.5} />
           </EffectComposer>
         </Suspense>
       </Canvas>

@@ -22,7 +22,6 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-4 sm:inset-6 md:inset-10 border border-line rounded-sm hidden sm:block" />
       <div className="pointer-events-none absolute top-8 right-6 md:top-10 md:right-12 mono-label text-[10px] text-ink-faint hidden lg:flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse" />
-        model: portfolio.v3 · drag to explore
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 w-full">

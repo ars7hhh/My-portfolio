@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const phrase = "Let's know more about me";
 
@@ -21,10 +21,11 @@ const word = {
 export default function IntroTagline() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+const smoothProgress = useSpring(scrollYProgress, { stiffness: 300, damping: 40 });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const blurPx = useTransform(scrollYProgress, [0, 0.85], [0, 14]);
+  const opacity = useTransform(smoothProgress, [0, 0.75], [1, 0]);
+  const scale = useTransform(smoothProgress, [0, 1], [1, 1.1]);
+  const blurPx = useTransform(smoothProgress, [0, 0.85], [0, 14]);
   const filter = useTransform(blurPx, (v) => `blur(${v}px)`);
   const inOpacity = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
   const inY = useTransform(scrollYProgress, [0, 0.35], [40, 0]);
@@ -46,9 +47,9 @@ export default function IntroTagline() {
       </motion.div>
 
       <motion.div
-        style={{ opacity, scale, filter }}
-        className="relative z-10 max-w-4xl px-6 text-center"
-      >
+  style={{ opacity, scale, filter, willChange: "filter, transform, opacity" }}
+  className="relative z-10 max-w-4xl px-6 text-center"
+>
         <motion.div
           style={{ opacity: inOpacity, y: inY }}
           className="mono-label text-[11px] text-ink-faint mb-6"
