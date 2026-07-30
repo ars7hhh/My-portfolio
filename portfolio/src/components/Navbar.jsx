@@ -45,25 +45,34 @@ export default function Navbar() {
           {profile.name.split(" ")[0]}
           <span className="text-accent">.</span>
         </a>
+{/* Desktop Navigation */}
+<ul className="hidden md:flex items-center gap-8">
+  {links.map((l) => (
+    <li key={l.href}>
+      <a
+        href={l.href}
+        className="mono-label text-[11px] text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
+      >
+        {l.label}
+      </a>
+    </li>
+  ))}
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="mono-label text-[11px] text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+  <li>
+    <a
+      href="/Saheed_Arshad_CV.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mono-label text-[11px] text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
+    >
+      Resume
+    </a>
+  </li>
+</ul>
+
 {/* Desktop Right Side */}
-<div className="hidden md:flex items-center gap-3">
-
+<div className="hidden md:flex items-center">
   <span className="glass flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
-
     <span className="relative flex h-2.5 w-2.5">
       <span className="absolute inset-0 rounded-full bg-accent blur-[4px] opacity-70"></span>
       <span className="relative h-2.5 w-2.5 rounded-full bg-accent"></span>
@@ -72,18 +81,7 @@ export default function Navbar() {
     <span className="mono-label text-[10px] text-ink">
       Available for Opportunities
     </span>
-
   </span>
-
- <a
-  href="/Saheed_Arshad_CV.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="mono-label text-[11px] text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
->
-  Resume
-</a>
-
 </div>
         
 
@@ -115,50 +113,50 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
-      {open && (
-        <ul className="md:hidden glass mx-4 mt-2 rounded-2xl px-6 py-4 flex flex-col gap-4">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="mono-label text-xs text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
+     {/* Mobile Menu */}
+{open && (
+  <ul className="md:hidden glass mx-4 mt-2 rounded-2xl px-6 py-4 flex flex-col gap-4">
+    {links.map((l) => (
+      <li key={l.href}>
+        <a
+          href={l.href}
+          onClick={() => setOpen(false)}
+          className="mono-label text-xs text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
+        >
+          {l.label}
+        </a>
+      </li>
+    ))}
 
-          <li>
-          <span className="glass flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 w-fit">
+    {/* Resume */}
+    <li>
+      <a
+        href="/Saheed_Arshad_CV.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => setOpen(false)}
+        className="mono-label text-xs text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
+      >
+        Resume
+      </a>
+    </li>
 
-  <span className="relative flex h-2.5 w-2.5">
-    <span className="absolute inset-0 rounded-full bg-accent blur-[4px] opacity-70"></span>
-    <span className="relative h-2.5 w-2.5 rounded-full bg-accent"></span>
-  </span>
+    {/* Availability Badge */}
+    <li>
+      <span className="glass flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 w-fit">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="absolute inset-0 rounded-full bg-accent blur-[4px] opacity-70"></span>
+          <span className="relative h-2.5 w-2.5 rounded-full bg-accent"></span>
+        </span>
 
-
-  <span className="mono-label text-[10px] text-ink">
-    Available for Opportunities
-  </span>
-</span>
-          </li>
-
-          <li>
-          
-<a
-  href="/Saheed_Arshad_CV.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={() => setOpen(false)}
-  className="mono-label text-[11px] text-ink-soft hover:text-ink transition-all hover:drop-shadow-[0_0_10px_rgba(47,129,255,0.8)]"
->
-  Resume
-</a>
-          </li>
-        </ul>
-      )}
+        <span className="mono-label text-[10px] text-ink">
+          Available for Opportunities
+        </span>
+      </span>
+    </li>
+  </ul>
+)}
+      
     </motion.header>
   );
 }
