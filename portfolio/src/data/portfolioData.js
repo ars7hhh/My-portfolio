@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ars7hhh",
   github: "https://github.com/ars7hhh",
   summary:
-    "Data Science and AI/ML engineer with a strong foundation in statistical analysis, machine learning, and computer vision, withhands-on experience building and deploying machine learning models for real-world applications. Experienced in the full datascience lifecycle, including exploratory data analysis, feature engineering, model development, and evaluation, as well as buildingend-to-end AI applications that integrate deep learning models, local LLMs, and interactive web interfaces into practical, deployablesolutions. Eager to bring analytical rigor and a problem-solving mindset to a professional Data Science or AI/ML role.",
+    "Data Science and AI/ML engineer with a strong foundation in statistical analysis, machine learning, and computer vision, withhands-on experience building and deploying machine learning models for real-world applications. Experienced in the full datascience lifecycle, including exploratory data analysis, feature engineering, model development, and evaluation, as well as building end-to-end AI applications that integrate deep learning models, local LLMs, and interactive web interfaces into practical, deployable solutions. Eager to bring analytical rigor and a problem-solving mindset to a professional Data Science or AI/ML role.",
   punchline: "I build AI systems that see, understand, and act — from catching solar panel defects with computer vision to uncovering spending patterns through statistical analysis."
   };
 
@@ -91,8 +91,9 @@ export const projects = [
     tag: "Computer Vision",
     accuracy: "93% classification accuracy",
     description:
-      "Developed a computer vision web app that detects solar panel defects in real time, achieving 93% classification accuracyacross six defect categories with Grad-CAM++ heatmap visualizations for model interpretability, featuring Drone Modesimulation, zone-wise defect summaries, and batch processing via a Flask web interface.Conducted exploratory data analysis to diagnose class imbalance in the dataset and applied data augmentation techniquesto improve model performance and generalization.",
+      "Developed a computer vision web app that detects solar panel defects in real time, achieving 93% classification accuracy across six defect categories with Grad-CAM++ heatmap visualizations for model interpretability, featuring Drone Mode simulation, zone-wise defect summaries, and batch processing via a Flask web interface. Conducted exploratory data analysis to diagnose class imbalance in the dataset and applied data augmentation techniques to improve model performance and generalization.",
     stack: ["PyTorch", "ResNet18", "Transfer Learning", "Grad-CAM++", "OpenCV", "Flask", "Python"],
+    repo: null
   },
   {
     id: "finance-tracker",
@@ -103,19 +104,21 @@ export const projects = [
     description:
       "Built a full-stack AI-powered personal finance app that auto-categorizes expenses, performs statistical anomaly detectionon spending patterns, and answers financial queries in natural language. Delivered UPI SMS parsing, savings goals, bill reminders, split expense tracking, and a real-time budgeting dashboard, allrunning locally with zero data privacy concerns.",
     stack: ["Flask", "React", "JavaScript", "Ollama (TinyLlama)", "MySQL", "Python"],
+    repo:"https://github.com/ars7hhh/finance-tracker"
   },
   {
-    id: "deepfake-detection",
-    title: "Deepfake & AI-Generated Video Detection",
+    id: "Deepfake-detection",
+    title: "Deepfake & AI-Generated image and Video Detection",
     subtitle: "Temporal Inconsistency Analysis",
     tag: "Deep Learning",
     accuracy: "Frame-level temporal analysis",
     description:
-      "A deep learning model that detects deepfake and AI-generated videos by analysing temporal inconsistencies across video frames.",
+      "A deep learning model that detects deepfake and AI-generated images and videos by analysing temporal inconsistencies across video frames.",
     stack: ["Python", "TensorFlow/Keras", "OpenCV", "Scikit-learn"],
+    repo:"https://github.com/ars7hhh/Final-Year-Project"
   },
   {
-    id: "disease-prediction",
+    id: "Disease-prediction",
     title: "Disease Prediction using ML",
     subtitle: "Symptom-Based Diagnosis Assistant",
     tag: "Machine Learning · Healthcare",
@@ -123,9 +126,10 @@ export const projects = [
     description:
       "A machine learning system that predicts the likely disease from a patient's reported symptoms, trained on a labeled clinical dataset. Covers data cleaning and feature encoding, comparison across multiple classification algorithms, and a simple interface for entering symptoms and viewing the predicted condition along with confidence scores.",
     stack: ["Python", "Scikit-learn", "Pandas", "NumPy", "Flask"],
+    repo: null
   },
   {
-    id: "remote-user-auth",
+    id: "Remote-user-auth",
     title: "Remote User Authenticating System",
     subtitle: "Secure Multi-Factor Access Control",
     tag: "Security · Backend",
@@ -133,6 +137,7 @@ export const projects = [
     description:
       "A secure authentication system for verifying remote users before granting access to protected resources, built around encrypted credential storage, session/token-based login, and safeguards against common attack patterns such as brute-force and replay attempts. Designed to be a drop-in access-control layer for web applications.",
     stack: ["Python", "Flask", "MySQL", "REST APIs"],
+    repo: null
   },
 ];
 

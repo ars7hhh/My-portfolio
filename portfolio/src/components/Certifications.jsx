@@ -76,9 +76,7 @@ export default function Certifications() {
                   src={c.image}
                   alt={c.name}
                   aspect="aspect-[4/3]"
-                  label={`cert_0${i + 1}.jpg`}
                 />
-                <p className="mt-2 text-xs text-ink-faint">{c.name}</p>
               </motion.button>
             ))}
           </div>

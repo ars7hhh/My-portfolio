@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { skillGroups, creativeTools } from "../data/portfolioData";
 import SectionHeading from "./SectionHeading";
+import SkillIcon, { hasSkillIcon } from "./SkillIcon";
 import ToolIcon from "./ToolIcon";
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export default function Skills() {
   return (
@@ -19,16 +27,33 @@ export default function Skills() {
               transition={{ duration: 0.5, delay: (i % 3) * 0.07 }}
               className="glass glow-hover rounded-2xl p-6"
             >
-              <h3 className="mono-label text-[10px] text-accent mb-4">{g.group}</h3>
+              <h3 className="mono-label text-[10px] text-accent mb-4">
+                {g.group}
+              </h3>
+
               <div className="flex flex-wrap gap-2">
-                {g.items.map((item) => (
-                  <span
-                       key={`${g.group}-${item}`}
-                    className="glow-hover text-sm text-ink-soft border border-line-strong rounded-full px-3 py-1 hover:text-ink transition-colors"
-                  >
-                    {item}
-                  </span>
-                ))}
+                {g.items.map((item) => {
+                  const slug = slugify(item);
+                  const showIcon = hasSkillIcon(slug);
+
+                  return (
+                    <span
+                      key={item}
+                      className="glow-hover flex items-center gap-2 text-sm text-ink-soft border border-line-strong rounded-full px-3 py-1.5 hover:text-ink transition-colors"
+                    >
+                    {showIcon && (
+  <span className="flex items-center justify-center">
+    <SkillIcon
+      name={slug}
+      size={18}
+    />
+  </span>
+)}  
+
+                      <span>{item}</span>
+                    </span>
+                  );
+                })}
               </div>
             </motion.div>
           ))}
@@ -37,22 +62,30 @@ export default function Skills() {
             initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: (skillGroups.length % 3) * 0.07 }}
+            transition={{
+              duration: 0.5,
+              delay: (skillGroups.length % 3) * 0.07,
+            }}
             className="glass glow-hover rounded-2xl p-6"
           >
             <h3 className="mono-label text-[10px] text-accent mb-4">
               Creative — Photo &amp; Video Editing
             </h3>
+
             <div className="flex flex-wrap gap-2.5">
               {creativeTools.map((tool) => (
                 <span
                   key={tool.name}
-                  className="glow-hover flex items-center gap-2 text-sm text-ink-soft border border-line-strong rounded-full pl-2 pr-3.5 py-1.5 hover:text-ink transition-colors"
+                  className="glow-hover flex items-center gap-2 text-sm text-ink-soft border border-line-strong rounded-full px-3 py-1.5 hover:text-ink transition-colors"
                 >
-                  <span className="w-[22px] h-[22px] rounded-full overflow-hidden shrink-0 flex items-center justify-center bg-white/5">
-                    <ToolIcon name={tool.icon} size={18} />
+                  <span className="flex items-center justify-center">
+                    <ToolIcon
+                      name={tool.icon}
+                      size={20}
+                    />
                   </span>
-                  {tool.name}
+
+                  <span>{tool.name}</span>
                 </span>
               ))}
             </div>

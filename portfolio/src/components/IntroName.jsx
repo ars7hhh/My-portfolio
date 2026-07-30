@@ -90,7 +90,7 @@ export default function IntroName() {
           transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
           className="mt-4 text-sm md:text-base text-ink-soft font-medium max-w-xl mx-auto leading-relaxed"
         >
-          Computer Science Graduate specializing in Data Science | AI &amp; ML.
+          Computer Science Graduate specializing in Data Science | AI &amp; ML 
         </motion.p>
       </motion.div>
 
