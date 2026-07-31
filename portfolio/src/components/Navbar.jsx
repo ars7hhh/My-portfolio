@@ -79,7 +79,7 @@ export default function Navbar() {
     </span>
 
     <span className="mono-label text-[10px] text-ink">
-      Available for Opportunities
+      Open to Work
     </span>
   </span>
 </div>
@@ -150,7 +150,7 @@ export default function Navbar() {
         </span>
 
         <span className="mono-label text-[10px] text-ink">
-          Available for Opportunities
+          Open to Work
         </span>
       </span>
     </li>

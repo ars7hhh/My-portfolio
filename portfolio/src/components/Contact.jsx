@@ -110,7 +110,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-6 text-lg text-ink-soft max-w-xl mx-auto"
         >
-          Open to Data Science and Machine Learning roles, and collaborations.
+          Open to Data Science and Machine Learning roles and collaborations.
           Feel free to reach out through any of the channels below.
         </motion.p>
 

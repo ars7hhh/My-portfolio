@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ars7hhh",
   github: "https://github.com/ars7hhh",
   summary:
-    "Data Science and AI/ML engineer with a strong foundation in statistical analysis, machine learning, and computer vision, withhands-on experience building and deploying machine learning models for real-world applications. Experienced in the full datascience lifecycle, including exploratory data analysis, feature engineering, model development, and evaluation, as well as building end-to-end AI applications that integrate deep learning models, local LLMs, and interactive web interfaces into practical, deployable solutions. Eager to bring analytical rigor and a problem-solving mindset to a professional Data Science or AI/ML role.",
+    "Data Science and AI/ML engineer with a strong foundation in statistical analysis, machine learning, and computer vision, with hands-on experience building and deploying machine learning models for real-world applications. Experienced in the full data science lifecycle, including exploratory data analysis, feature engineering, model development, and evaluation, as well as building end-to-end AI applications that integrate deep learning models, local LLMs, and interactive web interfaces into practical, deployable solutions. Eager to bring analytical rigor and a problem-solving mindset to a professional Data Science or AI/ML role.",
   punchline: "I build AI systems that see, understand, and act — from catching solar panel defects with computer vision to uncovering spending patterns through statistical analysis."
   };
 
@@ -60,7 +60,7 @@ export const experience = [
 
 export const skillGroups = [
   { group: "Languages", items: ["Python", "SQL"] },
-  { group: " Data Science & Statistics", items: ["Data Cleaning", "Model Evaluation", "Exploratory Data Analysis","Feature Engineering", "Statistical Analysis","Data Visualization"] },
+  { group: "Data Science & Statistics", items: ["Data Cleaning", "Model Evaluation", "Exploratory Data Analysis","Feature Engineering", "Statistical Analysis","Data Visualization"] },
   {
     group: "AI / ML",
     items: ["Deep Learning", "Computer Vision", "Transfer Learning", "Retrieval-Augmented Generation (RAG)"],
@@ -85,7 +85,7 @@ export const creativeTools = [
 
 export const projects = [
   {
-    id: "solar-scan",
+    id: "Solar-Scan",
     title: "Solar Scan",
     subtitle: "Solar Panel Defect Detection",
     tag: "Computer Vision",
@@ -102,18 +102,18 @@ export const projects = [
     tag: "Generative AI · Full-Stack",
     accuracy: "Runs fully locally",
     description:
-      "Built a full-stack AI-powered personal finance app that auto-categorizes expenses, performs statistical anomaly detectionon spending patterns, and answers financial queries in natural language. Delivered UPI SMS parsing, savings goals, bill reminders, split expense tracking, and a real-time budgeting dashboard, allrunning locally with zero data privacy concerns.",
+      "Built a full-stack AI-powered personal finance app that auto-categorizes expenses, performs statistical anomaly detection on spending patterns, and answers financial queries in natural language. Delivered UPI SMS parsing, savings goals, bill reminders, split expense tracking, and a real-time budgeting dashboard, all running locally with zero data privacy concerns.",
     stack: ["Flask", "React", "JavaScript", "Ollama (TinyLlama)", "MySQL", "Python"],
     repo:"https://github.com/ars7hhh/finance-tracker"
   },
   {
     id: "Deepfake-detection",
-    title: "Deepfake & AI-Generated image and Video Detection",
+    title: "Deepfake & AI-Generated Image and Video Detection",
     subtitle: "Temporal Inconsistency Analysis",
     tag: "Deep Learning",
     accuracy: "Frame-level temporal analysis",
     description:
-      "A deep learning model that detects deepfake and AI-generated images and videos by analysing temporal inconsistencies across video frames.",
+      "A deep learning model that detects deepfake and AI-generated images and videos by analyzing temporal inconsistencies across video frames.",
     stack: ["Python", "TensorFlow/Keras", "OpenCV", "Scikit-learn"],
     repo:"https://github.com/ars7hhh/Final-Year-Project"
   },
