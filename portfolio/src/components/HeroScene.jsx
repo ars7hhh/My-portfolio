@@ -1,8 +1,27 @@
-import { Suspense, useRef, useMemo, useState} from "react";
+import { Suspense, useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
+
+function hasWebGL() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+function isMobileDevice() {
+  if (typeof window === "undefined") return false;
+  const coarsePointer = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  const narrowScreen = window.innerWidth < 768;
+  return coarsePointer || narrowScreen;
+}
 
 function buildNetwork(radius, detail, connectDist) {
   const geo = new THREE.IcosahedronGeometry(radius, detail);
@@ -126,9 +145,8 @@ function TravelingPulses({ nodes, edges }) {
   ));
 }
 
-function DriftParticles() {
+function DriftParticles({ count }) {
   const ref = useRef();
-  const count = 90;
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -137,7 +155,7 @@ function DriftParticles() {
       arr[i * 3 + 2] = (Math.random() - 0.5) * 5 - 1;
     }
     return arr;
-  }, []);
+  }, [count]);
 
   useFrame((state, delta) => {
     if (ref.current) ref.current.rotation.y += delta * 0.015;
@@ -152,57 +170,81 @@ function DriftParticles() {
     </points>
   );
 }
-function hasWebGL() {
-  try {
-    const canvas = document.createElement("canvas");
-    return !!(
-      window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-    );
-  } catch (e) {
-    return false;
-  }
+
+function StaticGlowFallback() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+      <div
+        className="w-96 h-96 rounded-full blur-[100px] opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(47,129,255,0.5) 0%, transparent 70%)" }}
+      />
+    </div>
+  );
 }
+
 export default function HeroScene() {
   const [supported] = useState(() => hasWebGL());
+  const [mobile] = useState(() => isMobileDevice());
+  const [inView, setInView] = useState(true);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    if (!wrapperRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(wrapperRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   if (!supported) {
     return (
-      <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-        <div
-          className="w-96 h-96 rounded-full blur-[100px] opacity-40"
-          style={{ background: "radial-gradient(circle, rgba(47,129,255,0.5) 0%, transparent 70%)" }}
-        />
+      <div className="absolute inset-0" aria-hidden="true">
+        <StaticGlowFallback />
       </div>
     );
   }
 
   return (
-    <div className="absolute inset-0" aria-hidden="true">
-      <Canvas
-        camera={{ position: [0, 0, 5.4], fov: 45 }}
-        dpr={[1, 1.75]}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <Suspense fallback={null}>
-          <ambientLight intensity={0.4} />
-          <NeuralNetwork />
-          <DriftParticles />
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            autoRotate
-            autoRotateSpeed={0.6}
-            minPolarAngle={Math.PI / 2 - 0.5}
-            maxPolarAngle={Math.PI / 2 + 0.5}
-            enableDamping
-            dampingFactor={0.06}
-          />
-          <EffectComposer>
-            <Bloom intensity={0.7} luminanceThreshold={0.15} luminanceSmoothing={0.35} mipmapBlur radius={0.5} />
-          </EffectComposer>
-        </Suspense>
-      </Canvas>
+    <div ref={wrapperRef} className="absolute inset-0" aria-hidden="true">
+      {inView ? (
+        <Canvas
+          camera={{ position: [0, 0, 5.4], fov: 45 }}
+          dpr={mobile ? [1, 1] : [1, 1.5]}
+          gl={{ antialias: !mobile, alpha: true, powerPreference: "low-power" }}
+          frameloop={inView ? "always" : "demand"}
+        >
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.4} />
+            <NeuralNetwork />
+            <DriftParticles count={mobile ? 35 : 90} />
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              autoRotate
+              autoRotateSpeed={0.6}
+              minPolarAngle={Math.PI / 2 - 0.5}
+              maxPolarAngle={Math.PI / 2 + 0.5}
+              enableDamping
+              dampingFactor={0.06}
+            />
+            {!mobile && (
+              <EffectComposer>
+                <Bloom
+                  intensity={0.7}
+                  luminanceThreshold={0.15}
+                  luminanceSmoothing={0.35}
+                  mipmapBlur
+                  radius={0.5}
+                />
+              </EffectComposer>
+            )}
+          </Suspense>
+        </Canvas>
+      ) : (
+        <StaticGlowFallback />
+      )}
     </div>
   );
 }
