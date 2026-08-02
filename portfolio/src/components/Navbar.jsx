@@ -31,9 +31,9 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between transition-all duration-300 ${
+        className={`max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between gap-4 transition-all duration-300 ${
           scrolled
-            ? "glass rounded-full mx-4 md:mx-auto md:max-w-5xl"
+            ? "bg-bg/40 backdrop-blur-2xl saturate-150 border border-white/10 rounded-full mx-4 md:mx-auto md:max-w-6xl shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
             : "bg-transparent"
         }`}
       >
@@ -46,7 +46,7 @@ export default function Navbar() {
           <span className="text-accent">.</span>
         </a>
 {/* Desktop Navigation */}
-<ul className="hidden md:flex items-center gap-8">
+<ul className="hidden lg:flex items-center gap-5">
   {links.map((l) => (
     <li key={l.href}>
       <a
@@ -71,7 +71,7 @@ export default function Navbar() {
 </ul>
 
 {/* Desktop Right Side */}
-<div className="hidden md:flex items-center">
+<div className="hidden lg:flex items-center gap-3 shrink-0">
   <span className="glass flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
     <span className="relative flex h-2.5 w-2.5">
       <span className="absolute inset-0 rounded-full bg-accent blur-[4px] opacity-70"></span>
@@ -88,7 +88,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-ink"
+          className="lg:hidden text-ink"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -114,7 +114,7 @@ export default function Navbar() {
       </nav>
 
 {open && (
-  <ul className="md:hidden relative z-50 bg-bg/98 backdrop-blur-2xl border border-line-strong mx-4 mt-2 rounded-2xl px-6 py-4 flex flex-col gap-4 shadow-2xl">
+  <ul className="md:hidden relative z-50 bg-bg/60 backdrop-blur-2xl saturate-150 border border-white/10 mx-4 mt-2 rounded-2xl px-6 py-4 flex flex-col gap-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_50px_-14px_rgba(0,0,0,0.85)]">
     {links.map((l) => (
       <li key={l.href}>
         <a

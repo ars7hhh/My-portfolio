@@ -211,14 +211,14 @@ export default function HeroScene() {
       {inView ? (
         <Canvas
           camera={{ position: [0, 0, 5.4], fov: 45 }}
-          dpr={mobile ? [1, 1] : [1, 1.5]}
-          gl={{ antialias: !mobile, alpha: true, powerPreference: "low-power" }}
+          dpr={mobile ? [1, 1.5] : [1, 1.75]}
+          gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
           frameloop={inView ? "always" : "demand"}
         >
           <Suspense fallback={null}>
             <ambientLight intensity={0.4} />
             <NeuralNetwork />
-            <DriftParticles count={mobile ? 35 : 90} />
+            <DriftParticles count={mobile ? 60 : 90} />
             <OrbitControls
               enableZoom={false}
               enablePan={false}
@@ -231,14 +231,14 @@ export default function HeroScene() {
             />
             {!mobile && (
               <EffectComposer>
-                <Bloom
-                  intensity={0.7}
-                  luminanceThreshold={0.15}
-                  luminanceSmoothing={0.35}
-                  mipmapBlur
-                  radius={0.5}
-                />
-              </EffectComposer>
+              <Bloom
+                intensity={mobile ? 0.5 : 0.9}
+                luminanceThreshold={0.15}
+                luminanceSmoothing={0.35}
+                mipmapBlur
+                radius={mobile ? 0.35 : 0.5}
+              />
+            </EffectComposer>
             )}
           </Suspense>
         </Canvas>
