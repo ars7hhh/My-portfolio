@@ -107,6 +107,24 @@ export const projects = [
     repo:"https://github.com/ars7hhh/finance-tracker"
   },
   {
+  id: "Royal-Stall-Ledger",
+  title: "Royal Stall Customer Due Ledger",
+  subtitle: "Digital Customer Due & Payment Management System",
+  tag: "Full-Stack · Web App",
+  accuracy: "Real-time sync across devices",
+  description:
+    "Developed a digital customer due ledger for my father's retail shop to replace paper-based record keeping. Customer dues and payment details were previously maintained manually, and paper records could be misplaced or lost, making it difficult to reliably track outstanding balances. The system provides a centralized digital record for customers, dues, and payments, with real-time synchronization across devices. It also supports English/Kannada customer names, payment tracking, WhatsApp payment receipts, and secure shop-based access.",
+  stack: [
+    "Supabase",
+    "PostgreSQL",
+    "JavaScript",
+    "Real-time Database",
+    "Authentication",
+    "Row-Level Security",
+  ],
+  repo: "https://github.com/ars7hh/Royal-Stall-Ledger",
+},
+  {
     id: "Deepfake-detection",
     title: "Deepfake & AI-Generated Image and Video Detection",
     subtitle: "Temporal Inconsistency Analysis",
