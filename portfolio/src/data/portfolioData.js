@@ -122,7 +122,7 @@ export const projects = [
     "Authentication",
     "Row-Level Security",
   ],
-  repo: "https://github.com/ars7hh/Royal-Stall-Ledger",
+  repo: "https://github.com/ars7hhh/Royal-Stall-Ledger",
 },
   {
     id: "Deepfake-detection",
